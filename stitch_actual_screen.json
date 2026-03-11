@@ -1,0 +1,27 @@
+﻿{
+    "screenshot":  {
+                       "name":  "projects/11959787135032137386/files/6f46350551d742a5a2c6d25258041233",
+                       "downloadUrl":  "https://lh3.googleusercontent.com/aida/AOfcidWSSc5-nKBi4sRrRpHRh5xDj7WVRDGXycpiy6hx-Wnrfp_XEKoaSY3RUyAOUg3mY4vc4a_VhoM3QB6K8JEIM9JM_k1P_XdKSh3yuK3t5GpByYv-Ld3a0q0wXJ4zTEoYdrlhpYH_t2XmaeLf7XiSopUa62tfdW56uM9WQ-rT1SILwQY1QgOqTljl1UGG7vwi1F1p3TL9QgKE_MSMrbXVh5uQr9x_C1J6zF1BU6YRW-Z6xTPZZ8Farwjc7D7V"
+                   },
+    "htmlCode":  {
+                     "name":  "projects/11959787135032137386/files/ac3ecdc97e174e2d93c1ef494eb39286",
+                     "downloadUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2UxMWIwZWU2NjFkYjQwNzA4MTEyYmRkZmE0OTFiMDk4EgsSBxCS_8zL2xUYAZIBJAoKcHJvamVjdF9pZBIWQhQxMTk1OTc4NzEzNTAzMjEzNzM4Ng\u0026filename=\u0026opi=89354086",
+                     "mimeType":  "text/html"
+                 },
+    "id":  "b7d67ea6ea644271a612d63afe0ba31d",
+    "generatedBy":  "edit_agent",
+    "width":  "2560",
+    "height":  "2048",
+    "title":  "page.tsx",
+    "prompt":  "Title: Hyke AI Dashboard - Tech Noir Stepper\nContext: B2B SaaS Dashboard for Hyke AI, focused on high-conversion and premium aesthetics for a WhatsApp AI sales platform.\nDescription of the screen: Dashboard Home Screen for Hyke AI, variant 3 of 3. \n- Theme: Futuristic Tech-Noir, using deep black (bg-black) and razor-thin borders (border-white/10).\n- Navigation: Left sidebar (implied context) with the main area showing a clean \u0027Activity Hub\u0027.\n- Header: Integrated search bar and profile section at the top.\n- Stats: Metric cards use a \u0027frosted glass\u0027 look with higher opacity (bg-white/5) and vivid icons from Lucide.\n- Setup Guide: A horizontal timeline or \u0027Stepper\u0027 component at the top of the main content area to immediately grab attention, using a gradient line to connect steps.\n- Buttons: High-gloss finish with subtle inner shadows and external glows.\n- Feature Highlight: A small \u0027Whats New\u0027 card at the bottom right with a subtle emerald glow to encourage feature discovery.\nPlatform: web\nForm factor: desktop",
+    "name":  "projects/11959787135032137386/screens/b7d67ea6ea644271a612d63afe0ba31d",
+    "theme":  {
+
+              },
+    "deviceType":  "DESKTOP",
+    "screenType":  "DESIGN",
+    "screenMetadata":  {
+                           "agentType":  "PRO_AGENT",
+                           "status":  "COMPLETE"
+                       }
+}

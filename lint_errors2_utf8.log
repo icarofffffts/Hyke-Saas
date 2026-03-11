@@ -1,0 +1,33 @@
+﻿
+> dashboard@0.1.0 lint
+> eslint
+
+
+C:\Users\Administrator\Desktop\Projetos Privados - IcaroDev\Saas\dashboard\check-schemas.cjs
+  1:20  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+C:\Users\Administrator\Desktop\Projetos Privados - IcaroDev\Saas\dashboard\create-tables.cjs
+  1:20  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+C:\Users\Administrator\Desktop\Projetos Privados - IcaroDev\Saas\dashboard\fix-schema.cjs
+   1:20  error    A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  18:18  warning  'e' is defined but never used            @typescript-eslint/no-unused-vars
+
+C:\Users\Administrator\Desktop\Projetos Privados - IcaroDev\Saas\dashboard\migrate-limits.cjs
+  1:20  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+C:\Users\Administrator\Desktop\Projetos Privados - IcaroDev\Saas\dashboard\new_page.tsx
+   41:22   warning  'error' is defined but never used                                @typescript-eslint/no-unused-vars
+  151:109  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  151:124  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  170:100  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  170:118  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\Administrator\Desktop\Projetos Privados - IcaroDev\Saas\dashboard\src\app\api\agent\route.ts
+  71:26  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Administrator\Desktop\Projetos Privados - IcaroDev\Saas\dashboard\src\types\next-auth.d.ts
+  1:8  warning  'NextAuth' is defined but never used  @typescript-eslint/no-unused-vars
+
+Ô£û 12 problems (8 errors, 4 warnings)
+

@@ -1,0 +1,200 @@
+{
+    "name": "Hyke Solutions - Agente Multi-Tenant (Evolution API) v2",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "hyke-agent-webhook",
+                "options": {}
+            },
+            "name": "Webhook Evolution",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                -1168,
+                -416
+            ],
+            "id": "5cf06239-dd78-414c-8e05-4549fc69f866",
+            "webhookId": "evolution-agent-webhook-id"
+        },
+        {
+            "parameters": {
+                "url": "=https://fair-doodles-share.loca.lt/api/context?instanceName={{ $json.body.instance }}",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "Bypass-Tunnel-Reminder",
+                            "value": "true"
+                        }
+                    ]
+                },
+                "options": {
+                    "ignoreResponseCode": true
+                }
+            },
+            "name": "Buscar Contexto da Empresa",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4,
+            "position": [
+                -960,
+                -416
+            ],
+            "id": "0425417e-f34f-4865-9d75-04adb678a0e0"
+        },
+        {
+            "parameters": {
+                "conditions": {
+                    "boolean": [
+                        {
+                            "value1": "={{ $node[\"Buscar Contexto da Empresa\"].json.error ? false : true }}",
+                            "value2": true
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "name": "Empresa Existe?",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 2,
+            "position": [
+                -768,
+                -416
+            ],
+            "id": "bd362639-96db-44e1-b538-7cf0e64a054d"
+        },
+        {
+            "parameters": {
+                "text": "={{ $node[\"Webhook Evolution\"].json.body.data.message.conversation || $node[\"Webhook Evolution\"].json.body.data.message.extendedTextMessage.text || \"\" }}",
+                "options": {
+                    "systemMessage": "=\nSISTEMA: Você atende os clientes como o agente da empresa {{ $node[\"Buscar Contexto da Empresa\"].json.companyName }}.\n\n==== REGRAS ESPECÍFICAS DA EMPRESA ====\n{{ $node[\"Buscar Contexto da Empresa\"].json.basePrompt }}\n\n==== BASE DE PRODUTOS / FAQ ====\n{{ $node[\"Buscar Contexto da Empresa\"].json.products }}\"
+                }
+            },
+            "type": "@n8n/n8n-nodes-langchain.agent",
+            "typeVersion": 1,
+            "position": [
+                -496,
+                -448
+            ],
+            "id": "3b3994ba-055a-474c-8982-827fd959761f",
+            "name": "AI Agent"
+        },
+        {
+            "parameters": {
+                "options": {}
+            },
+            "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+            "typeVersion": 1,
+            "position": [
+                -544,
+                -208
+            ],
+            "id": "1ce3e365-2f6c-4eab-bcad-0b6420aae974",
+            "name": "Google Gemini Chat Model",
+            "credentials": {
+                "googlePalmApi": {
+                    "id": "OiL29nYFKNI7F6Uf",
+                    "name": "Minha Conta Superfoods Icaro"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "=https://evolution.icarodev.cloud/message/sendText/{{ $node[\"Webhook Evolution\"].json.body.instance }}",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "apikey",
+                            "value": "Icaro123!"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "number",
+                            "value": "={{ $node[\"Webhook Evolution\"].json.body.data.key.remoteJid.replace('@s.whatsapp.net', '') }}"
+                        },
+                        {
+                            "name": "text",
+                            "value": "={{ $json.output }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "name": "Responder Cliente via Evolution",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4,
+            "position": [
+                -112,
+                -432
+            ],
+            "id": "0cc092f6-5e51-42dc-bf93-47b4fe19dc8f"
+        }
+    ],
+    "connections": {
+        "Webhook Evolution": {
+            "main": [
+                [
+                    {
+                        "node": "Buscar Contexto da Empresa",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Buscar Contexto da Empresa": {
+            "main": [
+                [
+                    {
+                        "node": "Empresa Existe?",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Empresa Existe?": {
+            "main": [
+                [
+                    {
+                        "node": "AI Agent",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "AI Agent": {
+            "main": [
+                [
+                    {
+                        "node": "Responder Cliente via Evolution",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Google Gemini Chat Model": {
+            "ai_languageModel": [
+                [
+                    {
+                        "node": "AI Agent",
+                        "type": "ai_languageModel",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "pinData": {},
+    "meta": {
+        "instanceId": "dfa2060e857c428f8c7a154672f326257bd391e84ae3fba0171563a0d485bfbf"
+    }
+}

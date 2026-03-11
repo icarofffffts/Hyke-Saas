@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  app:
+    image: hyke-saas:latest
+    deploy:
+      replicas: 1
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.hykesaas.rule=Host(`hyke.arxsolutions.cloud`)"
+        - "traefik.http.routers.hykesaas.entrypoints=websecure"
+        - "traefik.http.routers.hykesaas.tls=true"
+        - "traefik.http.routers.hykesaas.tls.certresolver=letsencryptresolver"
+        - "traefik.http.services.hykesaas.loadbalancer.server.port=3000"
+        - "traefik.docker.network=rede_principal"
+    environment:
+      # Next Auth Configuration
+      NEXTAUTH_URL: "https://hyke.arxsolutions.cloud"
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+
+      # Database Configuration
+      DATABASE_URL: ${DATABASE_URL}
+
+      # External Integrations Configuration
+      EVOLUTION_API_URL: ${EVOLUTION_API_URL}
+      EVOLUTION_API_TOKEN: ${EVOLUTION_API_TOKEN}
+      N8N_WEBHOOK_URL: ${N8N_WEBHOOK_URL}
+
+      # Mercado Pago Configuration
+      MERCADOPAGO_ACCESS_TOKEN: ${MERCADOPAGO_ACCESS_TOKEN}
+      MERCADOPAGO_WEBHOOK_SECRET: ${MERCADOPAGO_WEBHOOK_SECRET}
+
+      # Auth fix for some environments
+      AUTH_URL: ${AUTH_URL}
+
+      PORT: "3000"
+    networks:
+      - rede_principal
+
+networks:
+  rede_principal:
+    external: true

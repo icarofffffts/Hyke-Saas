@@ -1,43 +1,35 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Strict Privacy
+*.log
+*.txt
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!next.config.ts
+*.bak
+*.bak.*
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
+# Private Folders
+legacy/
+temp/
+tmp/
+backup/
 .env*
+! .env.example
 
-# vercel
+# Next.js
+.next/
+out/
+build/
+node_modules/
 .vercel
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
 
-/src/generated/prisma
+# System
+.DS_Store
+Thumbs.db

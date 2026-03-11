@@ -28,5 +28,18 @@
 - **AI Engine**: n8n + Google Gemini/OpenAI.
 - **Infrastructure**: Docker & Docker Compose.
 
+## 🛠️ Instalação e Execução
+
+Para rodar o ecossistema completo localmente:
+
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/icarofffffts/Hyke-Saas.git
+   cd Hyke-Saas
+   ```
+
+2. **Dashboard**: Siga as instruções em [/dashboard](./dashboard/README.md).
+3. **Workflows**: Importe os arquivos JSON da pasta [/workflows](./workflows) no seu n8n.
+
 ---
 Desenvolvido por [Icaro](https://github.com/icarofffffts)
